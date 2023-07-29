@@ -99,7 +99,8 @@ require("lazy").setup({
       { "hrsh7th/cmp-nvim-lsp" },
       { "L3MON4D3/LuaSnip" },
     }
-  }
+  },
+  "eandrju/cellular-automaton.nvim",
 })
 
 -- colorscheme
@@ -147,6 +148,7 @@ require "nvim-treesitter.configs".setup {
   },
 }
 
+vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
 
 -- undotree
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, {})
