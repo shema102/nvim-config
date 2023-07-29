@@ -38,29 +38,27 @@ vim.opt.signcolumn = "yes"
 vim.opt.numberwidth = 1
 
 -- move highlited line in visual mode
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set('n', 'J', "mzJ`z")
+vim.keymap.set("n", "J", "mzJ`z")
 
 -- keep coursor in middle of screen on half page jump
-vim.keymap.set('n', '<C-u>', "<C-u>zz")
-vim.keymap.set('n', '<C-d>', "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
 
 -- preserve buffer on replace
-vim.keymap.set('x', 'p', '"_dP')
+vim.keymap.set("x", "p", [["_dP]])
 
 -- yank to plus register
-vim.keymap.set('n', '<leader>y', '"+y')
-vim.keymap.set('v', '<leader>y', '"+y')
-vim.keymap.set('n', '<leader>Y', '"+y')
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- delete without yangking
-vim.keymap.set('n', '<leader>d', '"_d')
-vim.keymap.set('v', '<leader>d', '"_d')
+vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
 -- noop Q
-vim.keymap.set('n', 'Q', '<nop>')
+vim.keymap.set("n", "Q", "<nop>")
 
 -- format whole file
 vim.keymap.set("n", "<leader>f", function()
@@ -81,25 +79,25 @@ require("lazy").setup({
   "tiagofumo/vim-nerdtree-syntax-highlight",
   {
     "nvim-telescope/telescope.nvim",
-    tag = '0.1.2',
+    tag = "0.1.2",
     dependencies = { "nvim-lua/plenary.nvim" }
   },
   { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
   "mbbill/undotree",
   "tpope/vim-fugitive",
   {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
+    "VonHeikemen/lsp-zero.nvim",
+    branch = "v2.x",
     dependencies = {
       -- LSP Support
-      { 'neovim/nvim-lspconfig' },
-      { 'williamboman/mason.nvim' },
-      { 'williamboman/mason-lspconfig.nvim' },
+      { "neovim/nvim-lspconfig" },
+      { "williamboman/mason.nvim" },
+      { "williamboman/mason-lspconfig.nvim" },
 
       -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'L3MON4D3/LuaSnip' },
+      { "hrsh7th/nvim-cmp" },
+      { "hrsh7th/cmp-nvim-lsp" },
+      { "L3MON4D3/LuaSnip" },
     }
   }
 })
@@ -121,13 +119,13 @@ vim.g.NERDTreeShowLineNumbers = 1
 vim.api.nvim_set_keymap("n", "<leader><leader>", ":NERDTreeToggle<CR>", { noremap = true, silent = true })
 
 -- setup telescope
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
-vim.keymap.set('n', '<leader>pg', builtin.live_grep, {})
-vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
+vim.keymap.set("n", "<leader>pg", builtin.live_grep, {})
+vim.keymap.set("n", "<C-p>", builtin.git_files, {})
 
 -- setup treesitter
-require 'nvim-treesitter.configs'.setup {
+require "nvim-treesitter.configs".setup {
   ensure_installed = { "c", "lua",
     "vim", "vimdoc", "typescript",
     "javascript",
